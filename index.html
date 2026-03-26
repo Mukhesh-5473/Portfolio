@@ -187,19 +187,12 @@
             font-weight: 600;
         }
 
-        /* Projects Grid */
+        /* Works Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+        .project-card { text-align: center; }
+        .project-card i { font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem; }
 
-        /* Contact Section */
-        .contact-box {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), #050b1a);
-            padding: 4rem;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid var(--glass-border);
-        }
-
+        /* Buttons */
         .btn {
             background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
             color: white;
@@ -239,13 +232,12 @@
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
+            <a href="#works">Works</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header>
-        <!-- BLACK HOLE ICON TOP -->
         <div class="black-hole-wrapper">
             <div class="bh-core"></div>
             <div class="bh-disk"></div>
@@ -254,7 +246,7 @@
         <div class="hero-content">
             <h1>S.R Mukhesh Kumar</h1>
             <p class="hero-tagline">Explorer of AGI, 3D Realism, and the logical architecture of the universe.</p>
-            <a href="#projects" class="btn">Explore My Universe</a>
+            <a href="#works" class="btn">Explore My Universe</a>
         </div>
     </header>
 
@@ -281,48 +273,52 @@
             </div>
         </section>
 
-        <section id="projects">
-            <h2><i class="fas fa-project-diagram"></i> Field Reports</h2>
+        <!-- NEW WORKS SECTION WITH 2 BUTTONS -->
+        <section id="works">
+            <h2><i class="fas fa-project-diagram"></i> Field Archives</h2>
             <div class="grid">
+                
+                <!-- Card 1: Rendered Images -->
                 <div class="card project-card">
-                    <i class="fas fa-vr-cardboard"></i>
-                    <h3>Project Cosmic</h3>
-                    <p>Blending 3D Blender environments with interactive web logic to create immersive curiousity-driven experiences.</p>
+                    <i class="fas fa-images"></i>
+                    <h3>Visual Archive</h3>
+                    <p>A collection of high-fidelity 3D environments, lighting studies, and architectural renders created in Blender.</p>
+                    <br>
+                    <a href="gallery.html" class="btn">Rendered Images</a>
                 </div>
+
+                <!-- Card 2: Animations -->
                 <div class="card project-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Logic Engine</h3>
-                    <p>Developing Python-based systems that automate workflows and simulate complex decision-making patterns.</p>
+                    <i class="fas fa-play-circle"></i>
+                    <h3>Motion Studio</h3>
+                    <p>Cinematic animations, fluid simulations, and motion graphics exploring physics and digital realism.</p>
+                    <br>
+                    <a href="vids.html" class="btn">3D Animations</a>
                 </div>
+
             </div>
         </section>
 
         <section id="contact">
-    <div class="contact-box">
-        <h2>Initiate Contact</h2>
-        <p>Available for collaborations on AGI research, 3D projects, or creative tech.</p>
-        <br>
-        <!-- This button opens the user's email app -->
-        <a href="mailto:mukiastro5473@gmail.com" class="btn">Send Transmission (Email)</a>
+            <div class="contact-box">
+                <h2>Initiate Contact</h2>
+                <p>Available for collaborations on AGI research, 3D projects, or creative tech.</p>
+                <br>
+                <a href="mailto:mukiastro5473@gmail.com" class="btn">Send Transmission (Email)</a>
 
-        <div class="social-links">
-            <!-- GitHub -->
-            <a href="https://github.com/Mukhesh-5473" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i>
-            </a>
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/srmj54732/" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i>
-            </a>
-
-            <!-- LinkedIn (You can add your link here later) -->
-            <a href="#" target="_blank">
-                <i class="fab fa-linkedin"></i>
-            </a>
-        </div>
-    </div>
-</section>
+                <div class="social-links">
+                    <a href="https://github.com/Mukhesh-5473" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/srmj54732/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer>
