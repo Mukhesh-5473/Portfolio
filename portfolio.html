@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.R Mukhesh Kumar | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050b1a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-color: #25bafa;
+            --secondary-accent: #0e23de;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Twinkling Star Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 11, 26, 0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo { 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            letter-spacing: 1px; 
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* Black Hole Hero Animation */
+        .black-hole-wrapper {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bh-core {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 30px 10px rgba(37, 186, 250, 0.4), 
+                        0 0 60px 20px rgba(14, 35, 222, 0.2);
+        }
+
+        .bh-disk {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-left-color: rgba(255,255,255,0.1);
+            animation: spin 3s linear infinite;
+            filter: blur(1px);
+        }
+
+        .bh-disk::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 1px solid var(--secondary-accent);
+            border-radius: 50%;
+            border-bottom-color: transparent;
+            animation: spin 5s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        /* General Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section { margin-bottom: 6rem; opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        h2 { font-size: 1.8rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+        }
+
+        .card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+
+        /* Skills */
+        .skills-flex { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .skill-badge {
+            background: rgba(37, 186, 250, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Projects Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+
+        /* Contact Section */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), #050b1a);
+            padding: 4rem;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(14, 35, 222, 0.2);
+        }
+
+        .btn:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(14, 35, 222, 0.4); }
+
+        .social-links { margin-top: 2.5rem; font-size: 1.8rem; }
+        .social-links a { color: var(--text-main); margin: 0 1.5rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--accent-color); }
+
+        footer { text-align: center; padding: 4rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid var(--glass-border); }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container"></div>
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-circle-notch fa-spin"></i> 
+            S.R MUKHESH KUMAR
+        </div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <!-- BLACK HOLE ICON TOP -->
+        <div class="black-hole-wrapper">
+            <div class="bh-core"></div>
+            <div class="bh-disk"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1>S.R Mukhesh Kumar</h1>
+            <p class="hero-tagline">Explorer of AGI, 3D Realism, and the logical architecture of the universe.</p>
+            <a href="#projects" class="btn">Explore My Universe</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2><i class="fas fa-atom"></i> The Creator</h2>
+            <div class="card">
+                <p>I am a developer and creator who thrives at the intersection of the physical and digital. With <b>4+ years of experience in 3D rendering</b> and a background in game development (Lua/Python), I view code as a medium for creation.</p>
+                <p>Whether I am soldering hardware, capturing the world through a lens, or building physical tesseracts, I am constantly exploring how systems work. My current mission is the <b>development of AGI</b>—moving beyond basic OOP to create systems that can think, learn, and break free of conventional limitations.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2><i class="fas fa-bolt"></i> Capabilities</h2>
+            <div class="skills-flex">
+                <span class="skill-badge"><i class="fab fa-unity"></i> Unity Engine</span>
+                <span class="skill-badge"><i class="fas fa-cube"></i> Blender Artist (3D)</span>
+                <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-badge"><i class="fas fa-microchip"></i> Hardware / Soldering</span>
+                <span class="skill-badge"><i class="fas fa-code"></i> Lua / Game Logic</span>
+                <span class="skill-badge"><i class="fas fa-braille"></i> AGI Research</span>
+                <span class="skill-badge"><i class="fab fa-html5"></i> Frontend Dev</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2><i class="fas fa-project-diagram"></i> Field Reports</h2>
+            <div class="grid">
+                <div class="card project-card">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h3>Project Cosmic</h3>
+                    <p>Blending 3D Blender environments with interactive web logic to create immersive curiousity-driven experiences.</p>
+                </div>
+                <div class="card project-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Logic Engine</h3>
+                    <p>Developing Python-based systems that automate workflows and simulate complex decision-making patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+    <div class="contact-box">
+        <h2>Initiate Contact</h2>
+        <p>Available for collaborations on AGI research, 3D projects, or creative tech.</p>
+        <br>
+        <!-- This button opens the user's email app -->
+        <a href="mailto:mukiastro5473@gmail.com" class="btn">Send Transmission (Email)</a>
+
+        <div class="social-links">
+            <!-- GitHub -->
+            <a href="https://github.com/Mukhesh-5473" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/srmj54732/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <!-- LinkedIn (You can add your link here later) -->
+            <a href="#" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+</section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 S.R Mukhesh Kumar. Built for the future. India.</p>
+    </footer>
+
+    <script>
+        // Smooth Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
