@@ -3,133 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Gallery | S.R Mukhesh Kumar</title>
+    <title>3D Archive | S.R Mukhesh Kumar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #050b1a;
-            --accent-color: #25bafa;
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 2rem;
-        }
-
-        /* Twinkling Stars */
-        .stars {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-            z-index: -1;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .back-btn {
-            text-decoration: none;
-            color: var(--accent-color);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 2rem;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover { transform: translateX(-5px); }
-
-        h1 { font-size: 3rem; margin: 0; background: linear-gradient(to right, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* The Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 4rem auto;
-        }
-
-        .gallery-item {
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            overflow: hidden;
-            transition: 0.4s;
-            position: relative;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(37, 186, 250, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .info {
-            padding: 1.5rem;
-            background: rgba(5, 11, 26, 0.8);
-        }
-
-        .info h3 { margin: 0; color: var(--accent-color); }
-        .info p { font-size: 0.85rem; color: #94a3b8; margin: 5px 0 0; }
-
-        footer { text-align: center; padding: 4rem; opacity: 0.5; font-size: 0.8rem; }
+        :root { --bg-color: #050b1a; --accent-color: #25bafa; --text-main: #f8fafc; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; padding: 4rem 0; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { background: rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .info { padding: 1rem; text-align: center; }
+        .back-btn { position: fixed; top: 20px; left: 20px; color: #fff; text-decoration: none; background: #25bafa; padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; z-index: 100; }
     </style>
 </head>
 <body>
-
-    <div class="stars"></div>
-
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Universe</a>
+    <a href="index.html" class="back-btn">← Back</a>
+    <div class="container">
+        <header><h1>3D Render Archive</h1></header>
+        <div class="gallery-grid" id="grid"></div>
     </div>
 
-    <header>
-        <h1>3D Render Archive</h1>
-        <p>A collection of physical and digital creations built in Blender.</p>
-    </header>
-
-    <div class="gallery-grid">
-        
-        <!-- COPY THIS BLOCK FOR EVERY NEW IMAGE -->
-        <div class="gallery-item">
-            <img src="render1.jpg" alt="3D Render">
-            <div class="info">
-                <h3>Project Title</h3>
-                <p>Blender | Cycles | 2024</p>
-            </div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="render2.jpg" alt="3D Render">
-            <div class="info">
-                <h3>Tesseract Core</h3>
-                <p>Geometry Nodes & Procedural Textures</p>
-            </div>
-        </div>
-        <!-- END OF IMAGE BLOCK -->
-
-    </div>
-
-    <footer>
-        &copy; 2026 S.R Mukhesh Kumar | All Renders Created in Blender
-    </footer>
-
+    <script>
+        const grid = document.getElementById('grid');
+        // This loop automatically builds 25 boxes
+        for (let i = 1; i <= 25; i++) {
+            grid.innerHTML += `
+                <div class="gallery-item">
+                    <img src="${i}.png" onerror="this.src='${i}.jpg'" alt="Render">
+                    <div class="info"><h3>Project ${i}</h3></div>
+                </div>`;
+        }
+    </script>
 </body>
 </html>
