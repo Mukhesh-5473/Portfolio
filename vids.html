@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cinema | S.R Mukhesh Kumar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #050b1a; --accent-color: #25bafa; --glass-border: rgba(255, 255, 255, 0.1); --text-main: #f8fafc; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); z-index: -1; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; padding: 6rem 0 3rem; }
+        h1 { font-size: 3rem; background: linear-gradient(to right, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .back-btn { position: fixed; top: 20px; left: 20px; text-decoration: none; color: var(--text-main); background: rgba(30, 41, 59, 0.5); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--glass-border); backdrop-filter: blur(10px); z-index: 1000; transition: 0.3s; }
+        .back-btn:hover { background: var(--accent-color); color: #000; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-top: 3rem; }
+        .video-card { background: rgba(30, 41, 59, 0.3); border-radius: 20px; border: 1px solid var(--glass-border); overflow: hidden; transition: 0.4s; }
+        .video-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 10px 30px rgba(37, 186, 250, 0.2); }
+        video { width: 100%; display: block; background: #000; border-bottom: 1px solid var(--glass-border); }
+        .info { padding: 1.5rem; text-align: center; }
+        .info h3 { margin: 0; color: var(--accent-color); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        footer { text-align: center; padding: 5rem; opacity: 0.5; font-size: 0.8rem; }
+        @media (max-width: 768px) { .video-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    <div class="container">
+        <header>
+            <h1>Motion Archive</h1>
+            <p>Exploring 3D animations, simulations, and physics.</p>
+        </header>
+        <div class="video-grid" id="video-grid">
+            <!-- Videos will be generated here -->
+        </div>
+        <footer>&copy; 2026 S.R Mukhesh Kumar | Motion Graphics Studio</footer>
+    </div>
+    <script>
+        const grid = document.getElementById('video-grid');
+        const totalVideos = 12; // Total number of v videos
+        for (let i = 1; i <= totalVideos; i++) {
+            grid.innerHTML += `
+                <div class="video-card">
+                    <video controls loop muted preload="metadata">
+                        <source src="v${i}.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="info"><h3>Animation ${i}</h3></div>
+                </div>`;
+        }
+    </script>
+</body>
+</html>
